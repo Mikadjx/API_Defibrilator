@@ -10,13 +10,10 @@ const client = require('./connection.js')
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 
-
-
-
-
-
+app.use(cors({origin: 'http://localhost:4200'}));
 // Utilisation de la fonction pour écouter le serveur pg admin et renvoyer un message de connexion sur la console
 
 app.listen(3000, ()=>{
@@ -27,7 +24,7 @@ client.connect();
 
 //Connexion à la BDD sur le localhost:3030 + requête pour afficher toute la table defibrilator
 
-app.get('/', (req, res)=>{
+app.get('/defibrilator', (req, res)=>{
     client.query("SELECT * FROM defibrilator", (err, result)=>{
         if(!err){
             res.send(result.rows);
@@ -48,14 +45,14 @@ app.get('/defibrilator/:id', (req, res)=>{
     });
     client.end;
 })
-client.connect();
+
 
 
 
 // Ajouter de nouveau défibrilateur
 
 app.post('/defibrilator', (req, res)=> {
-    const user = req.body;
+    const defibrilator = req.body;
     let insertQuery = `insert into defibrilator(serial, locationName, locationAdrr, state, electrodesExpiry) 
                        values(${defibrilator.id}, '${defibrilator.serial}', '${defibrilator.locationName}', '${defibrilator.locationAdrr}', '${defibrilator.state}', '${defibrilator.electrodesExpiry}')`
 
