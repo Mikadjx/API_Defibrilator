@@ -17,10 +17,6 @@
 - npm install express --save => Cette commande a pour but de télécharger depuis la registry NPM puis d’installer la librairie express ainsi que l’ensemble des librairies dont express a besoin pour fonctionner dans votre répertoire de travail, dans le répertoire node_modules. NPM va également l’ajouter dans votre package.json dans l’objet dependencies.
 
 
-❓ Pourquoi est-ce qu’on a besoin d’ajouter la dépendance dans package.json ?
-ℹ️ Pour qu’un projet d’API Node JS ou tout autre projet Node puisse être repris par un autre développeur ou être déployé sur un serveur à distance, le package.jsonDOIT référencer toutes les librairies dont l’application a besoin pour bien fonctionner. Vous n’uploaderez pas toutes votre application avec le répertoire node_modules mais simplement votre code et le package.json. Le serveur sera en charge de faire un npm install pour récupérer toutes les dépendances.
-
-
 - node index.js : => En lançant cette commande  dans votre terminal, vous verrez qu’il affichera que votre serveur est à l’écoute. Cela veut dire que tout fonctionne bien. S’il y a une erreur, vous aurez droit à un message d’erreur sur votre terminal.
 
 - node install nodemon -g => Pour chaque changement dans le code de votre Node JS API, il faudra relancer le serveur afin qu’ils soient pris en compte. Il existe la librairie Nodemon qui permet de relancer automatiquement votre serveur node à chaque fois que vous sauvegardez votre fichier. Pour l’installer, saisissez la commande npm install nodemon -g puis lorsque vous lancerez pour la première fois votre serveur, utilisez la commande nodemon au lieu de node index.js
